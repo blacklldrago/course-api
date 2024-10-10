@@ -1,7 +1,11 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors'); // Import cors
 const app = express();
 const port = 3000;
+
+// Enable CORS
+app.use(cors()); // Use cors middleware
 
 // In-memory "database" with the structure of courses array
 let coursesData = {
@@ -73,7 +77,6 @@ app.delete('/courses/:id', (req, res) => {
     res.status(204).send();
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Backend running at http://localhost:${port}`);
 });
